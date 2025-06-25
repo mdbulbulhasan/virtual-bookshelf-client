@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: blue;
+  --color-secondary: teal;
+  --color-background: #f4f1ea;
+}
+/* Force synthwave background overrides for DaisyUI-like components */
+
+/* Page background */
+html.synthwave, html.synthwave body {
+  background-color: #1e1e2f !important;
+  color: #e0e0e0 !important;
+}
+
+/* Form container background (bg-base-100 / card) */
+html.synthwave .bg-base-100,
+html.synthwave .card,
+html.synthwave .card-body,
+html.synthwave fieldset {
+  background-color: #2a2a40 !important;
+  color: #e0e0e0 !important;
+  border-color: #3f3f5e !important;
+}
+
+/* Hero section background (bg-base-200) */
+html.synthwave .bg-base-200 {
+  background-color: #292942 !important;
+}
+
+/* Input fields */
+html.synthwave input,
+html.synthwave textarea,
+html.synthwave select {
+  background-color: #2a2a40 !important;
+  color: #e0e0e0 !important;
+  border-color: #3f3f5e !important;
+}
+
+/* Placeholder text */
+html.synthwave input::placeholder,
+html.synthwave textarea::placeholder {
+  color: #a0a0c0 !important;
+}
+
+/* Optional: Buttons */
+html.synthwave .btn {
+  background-color: #5e60ce !important;
+  color: white !important;
+}
+
+/* Optional: Link Hover */
+html.synthwave a:hover {
+  color: #b4b4ff !important;
+}
