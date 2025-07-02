@@ -87,7 +87,9 @@ const Login = () => {
                 required
               />
             </div>
-            <button className="btn btn-neutral w-full mt-2">Login</button>
+            <button className="btn bg-blue-500 hover:bg-blue-600 w-full mt-2">
+              Login
+            </button>
           </form>
 
           <div className="mt-4 text-center text-sm">

@@ -37,37 +37,41 @@ const Home = () => {
     >
       <div className="space-y-12">
         {/* Banner Section */}
-        <section>
+        <section className="-mx-6">
           <Banner />
         </section>
 
         {/* Popular Books */}
-        <section className="px-6">
+        <section className="px-6 popular-books">
           <h2 className="text-3xl font-bold mb-6 text-center">Popular Books</h2>
 
           {loading ? (
             <div className="text-center text-xl font-medium animate-pulse">
-              <LoadingSpinner></LoadingSpinner>
+              <LoadingSpinner />
             </div>
           ) : (
             <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
               {books.map((book) => (
                 <div
                   key={book._id}
-                  className="border rounded-lg p-4 shadow hover:shadow-lg transition"
+                  className="book-card border rounded-lg p-4 shadow hover:shadow-lg transition"
                 >
                   <img
                     src={book.cover_photo}
                     alt={book.book_title}
                     className="w-full h-40 object-cover rounded-md mb-3"
                   />
-                  <h3 className="text-xl font-semibold">{book.book_title}</h3>
-                  <p className="text-gray-600">Author: {book.book_author}</p>
-                  <p className="text-sm text-gray-500">
+                  <h3 className="book-title text-xl font-semibold">
+                    {book.book_title}
+                  </h3>
+                  <p className="book-author text-gray-600">
+                    Author: {book.book_author}
+                  </p>
+                  <p className="book-upvote text-sm text-gray-500">
                     Upvotes: {book.upvote}
                   </p>
                   <Link to={`/books/${book._id}`}>
-                    <button className="mt-3 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    <button className="mt-3 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer">
                       Details
                     </button>
                   </Link>
@@ -78,7 +82,7 @@ const Home = () => {
         </section>
 
         {/* Featured Categories */}
-        <section className="px-6">
+        <section className="px-6 featured-categories">
           <h2 className="text-3xl font-bold mb-6 text-center">
             Featured Categories
           </h2>
@@ -86,14 +90,14 @@ const Home = () => {
             {categories.map((category) => (
               <div
                 key={category}
-                className="bg-gradient-to-r from-purple-100 to-indigo-100 p-6 rounded-lg shadow"
+                className="category-card p-6 rounded-lg shadow"
               >
                 <h3 className="text-2xl font-semibold mb-2">{category}</h3>
-                <p className="text-gray-700">
+                <p className="description">
                   Explore our curated collection of {category} books.
                 </p>
                 <Link to="/bookshelf">
-                  <button className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+                  <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer">
                     Browse {category}
                   </button>
                 </Link>
@@ -108,7 +112,7 @@ const Home = () => {
         </section>
 
         {/* Extra Section 1: Testimonials */}
-        <section className="px-6">
+        <section className="testimonials-section px-6">
           <h2 className="text-3xl font-bold mb-6 text-center">
             What Readers Say
           </h2>
@@ -125,16 +129,16 @@ const Home = () => {
         </section>
 
         {/* Extra Section 2: Call to Action */}
-        <section className="bg-gradient-to-r from-yellow-100 to-pink-100 p-12 text-center rounded-lg shadow mx-6">
+        <section className="cta-section p-12 text-center rounded-lg shadow mx-6">
           <h2 className="text-3xl font-bold mb-4">
             Join the BookShelf Community
           </h2>
-          <p className="text-gray-700 mb-6">
+          <p className="mb-6">
             Start sharing your favorite reads and explore new ones from our vast
             library.
           </p>
           <Link to="/addbooks">
-            <button className="btn btn-secondary text-white px-6 py-3 rounded hover:bg-pink-700">
+            <button className="btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded">
               Add Your Book
             </button>
           </Link>

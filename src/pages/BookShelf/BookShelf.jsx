@@ -69,7 +69,7 @@ const BookShelf = () => {
 
   return (
     <motion.div
-      className="p-6"
+      className="p-6 bookshelf-page"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
@@ -146,7 +146,7 @@ const BookShelf = () => {
                 </p>
 
                 <Link to={`/books/${book._id}`}>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-secondary cursor-pointer">
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer">
                     View Details
                   </button>
                 </Link>

@@ -19,7 +19,9 @@ const BookDetails = () => {
 
   // Fetch reviews
   useEffect(() => {
-    fetch(`https://virtual-bookshelf-server-weld.vercel.app/reviews/${book._id}`)
+    fetch(
+      `https://virtual-bookshelf-server-weld.vercel.app/reviews/${book._id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -33,14 +35,17 @@ const BookDetails = () => {
 
   // Handle Reading Status
   const handleReadingStatusChange = (newStatus) => {
-    fetch(`https://virtual-bookshelf-server-weld.vercel.app/books/${book._id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_email: user.email,
-        updateData: { reading_status: newStatus },
-      }),
-    })
+    fetch(
+      `https://virtual-bookshelf-server-weld.vercel.app/books/${book._id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_email: user.email,
+          updateData: { reading_status: newStatus },
+        }),
+      }
+    )
       .then((res) => {
         if (!res.ok) throw new Error("Update failed");
         return res.json();
@@ -61,11 +66,14 @@ const BookDetails = () => {
       return;
     }
 
-    fetch(`https://virtual-bookshelf-server-weld.vercel.app/books/upvote/${book._id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_email: user?.email }),
-    })
+    fetch(
+      `https://virtual-bookshelf-server-weld.vercel.app/books/upvote/${book._id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_email: user?.email }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -150,11 +158,14 @@ const BookDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://virtual-bookshelf-server-weld.vercel.app/reviews/${id}`, {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ user_email: user.email }),
-        })
+        fetch(
+          `https://virtual-bookshelf-server-weld.vercel.app/reviews/${id}`,
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user_email: user.email }),
+          }
+        )
           .then((res) => res.json())
           .then(() => {
             Swal.fire("Deleted!", "Your review has been deleted.", "success");
@@ -231,7 +242,7 @@ const BookDetails = () => {
         {user && user.email !== book.user_email && (
           <button
             onClick={handleUpvote}
-            className="bg-blue-600 text-white px-4 py-2 mt-3 rounded-md hover:bg-secondary transition cursor-pointer"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mt-3 rounded-md transition cursor-pointer"
           >
             Upvote
           </button>
@@ -288,7 +299,7 @@ const BookDetails = () => {
                     {user?.email === review.user_email && !isEditing && (
                       <div className="flex gap-4 mt-2">
                         <button
-                          className="bg-blue-600 text-white px-4 py-2 mt-3 rounded-md hover:bg-secondary transition cursor-pointer text-sm"
+                          className="bg-blue-500 text-white px-4 py-2 mt-3 rounded-md hover:bg-blue-700 transition cursor-pointer text-sm"
                           onClick={() => {
                             setIsEditing(true);
                             setEditContent(review.content);
@@ -297,7 +308,7 @@ const BookDetails = () => {
                           Edit
                         </button>
                         <button
-                          className="text-white bg-red-600 px-4 py-2 mt-3 rounded-md hover:bg-secondary transition cursor-pointer text-sm"
+                          className="text-white bg-red-600 px-4 py-2 mt-3 rounded-md hover:bg-red-800 transition cursor-pointer text-sm"
                           onClick={() => handleDeleteReview(review._id)}
                         >
                           Delete
@@ -319,7 +330,7 @@ const BookDetails = () => {
                   ></textarea>
                   <button
                     type="submit"
-                    className="bg-green-600 text-white px-4 py-2 rounded-md mt-2 cursor-pointer"
+                    className="bg-green-600 hover:bg-green-800 text-white px-4 py-2 rounded-md mt-2 cursor-pointer"
                   >
                     Submit Review
                   </button>

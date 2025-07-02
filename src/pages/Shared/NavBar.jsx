@@ -53,6 +53,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to="/"
+          onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             isActive
               ? "font-bold text-blue-600 border-b-2 border-blue-600 pb-1 transition-all duration-200"
@@ -65,6 +66,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to="/bookshelf"
+          onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             isActive
               ? "font-bold text-blue-600 border-b-2 border-blue-600 pb-1 transition-all duration-200"
@@ -74,47 +76,56 @@ const NavBar = () => {
           BookShelf
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/addbooks"
-          className={({ isActive }) =>
-            isActive
-              ? "font-bold text-blue-600 border-b-2 border-blue-600 pb-1 transition-all duration-200"
-              : "text-gray-700 hover:text-blue-500 transition-all duration-200"
-          }
-        >
-          Add Books
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/mybooks"
-          className={({ isActive }) =>
-            isActive
-              ? "font-bold text-blue-600 border-b-2 border-blue-600 pb-1 transition-all duration-200"
-              : "text-gray-700 hover:text-blue-500 transition-all duration-200"
-          }
-        >
-          My Books
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/myprofile"
-          className={({ isActive }) =>
-            isActive
-              ? "font-bold text-blue-600 border-b-2 border-blue-600 pb-1 transition-all duration-200"
-              : "text-[#382110] hover:text-blue-500 transition-all duration-200"
-          }
-        >
-          My Profile
-        </NavLink>
-      </li>
+      {user ? (
+        <>
+          <li>
+            <NavLink
+              to="/addbooks"
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold text-blue-600 border-b-2 border-blue-600 pb-1 transition-all duration-200"
+                  : "text-gray-700 hover:text-blue-500 transition-all duration-200"
+              }
+            >
+              Add Books
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/mybooks"
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold text-blue-600 border-b-2 border-blue-600 pb-1 transition-all duration-200"
+                  : "text-gray-700 hover:text-blue-500 transition-all duration-200"
+              }
+            >
+              My Books
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/myprofile"
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold text-blue-600 border-b-2 border-blue-600 pb-1 transition-all duration-200"
+                  : "text-[#382110] hover:text-blue-500 transition-all duration-200"
+              }
+            >
+              My Profile
+            </NavLink>
+          </li>
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 
   return (
-    <div className="fixed top-0 left-0 z-50 w-full navbar bg-[#c7ab69] shadow-lg">
+    <div className="fixed top-0 left-0 z-50 w-full navbar bg-gradient-to-r from-yellow-100 to-pink-100 shadow-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <button
@@ -125,7 +136,13 @@ const NavBar = () => {
           </button>
 
           {menuOpen && (
-            <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+            <ul
+              className="menu menu-sm dropdown-content rounded-box z-10 mt-3 w-52 p-2 shadow"
+              style={{
+                backgroundColor: "var(--menu-bg)",
+                color: "var(--menu-text)",
+              }}
+            >
               {links}
             </ul>
           )}
@@ -141,7 +158,7 @@ const NavBar = () => {
             alt="BookShelf Logo"
             className="w-12 h-10 rounded-full hidden md:flex"
           />
-          <span>
+          <span className="text-black">
             Book<span className="text-yellow-500">SHELF</span>
           </span>
         </Link>
@@ -163,7 +180,7 @@ const NavBar = () => {
         {/* Theme toggle */}
         <label className="flex cursor-pointer gap-2 items-center ml-2">
           <svg
-            className="hidden md:flex"
+            className="hidden md:flex text-black"
             xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
@@ -184,7 +201,7 @@ const NavBar = () => {
             onChange={handleThemeToggle}
           />
           <svg
-            className="hidden md:flex"
+            className="hidden md:flex text-black"
             xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
@@ -200,15 +217,24 @@ const NavBar = () => {
         </label>
 
         {user ? (
-          <button onClick={handleSignOut} className="btn btn-secondary">
+          <button
+            onClick={handleSignOut}
+            className="btn bg-blue-500 hover:bg-blue-600"
+          >
             Sign Out
           </button>
         ) : (
           <>
-            <NavLink className="btn btn-secondary" to="/auth/register">
+            <NavLink
+              className="btn bg-blue-500 hover:bg-blue-600"
+              to="/auth/register"
+            >
               Register
             </NavLink>
-            <NavLink className="btn btn-secondary" to="/auth/login">
+            <NavLink
+              className="btn bg-blue-500 hover:bg-blue-600"
+              to="/auth/login"
+            >
               Signin
             </NavLink>
           </>

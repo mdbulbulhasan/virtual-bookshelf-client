@@ -51,8 +51,8 @@ const Footer = () => {
   );
 
   return (
-    <footer className="bg-[var(--bg-color)] text-[var(--text-color)] border-t border-base-300 px-6 py-10 mt-16">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+    <footer className="bg-gradient-to-r from-yellow-100 to-pink-100 border-t border-base-300 px-6 py-10 mt-16">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {/* Brand Info */}
         <div>
           <Link to="/" className="inline-flex items-center gap-2 mb-4">

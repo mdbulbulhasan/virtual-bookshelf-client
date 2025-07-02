@@ -6,7 +6,7 @@ import { Link } from "react-router";
 
 const Animation = () => {
   return (
-    <div className="hero bg-[var(--bg-color)] text-[var(--text-color)] min-h-full md:min-h-screen px-4 sm:px-6 md:px-12 py-8">
+    <div className="hero animation-section bg-[var(--bg-color)] text-[var(--text-color)] min-h-full md:min-h-screen px-4 sm:px-6 md:px-12 py-8">
       <div className="hero-content flex flex-col-reverse lg:flex-row-reverse items-center gap-10 w-full">
         {/* Images Section */}
         <div className="flex-1 hidden md:flex flex-col items-center justify-center gap-6 w-full">
@@ -40,7 +40,12 @@ const Animation = () => {
             Whether you're an avid reader or just getting started, your personal
             bookshelf awaits.
           </p>
-          <Link to='/bookshelf' className="btn btn-primary hover:bg-secondary mt-2">Explore Books</Link>
+          <Link
+            to="/bookshelf"
+            className="btn btn-primary hover:bg-secondary mt-2"
+          >
+            Explore Books
+          </Link>
         </div>
       </div>
     </div>

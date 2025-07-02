@@ -212,7 +212,7 @@ const AddBooks = () => {
 
           {/* Submit Button */}
           <input
-            className="btn btn-secondary w-full my-6"
+            className="btn bg-blue-500 hover:bg-blue-600 w-full my-6"
             type="submit"
             value={loading ? <LoadingSpinner></LoadingSpinner> : "Add New Book"}
             disabled={loading}
